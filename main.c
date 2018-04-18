@@ -26,17 +26,13 @@ void update_node_and_parents(struct tree_node **, struct list_node *, int);
 
 int main()
 {
-    struct timeval start, end;
-    double dstart, dend;
     initialize_tree();
-    gettimeofday(&start, 0);
     int i;
     for (i = 0; i < 50000; i++) {
         int random_number = (rand() % 9999) + 1;
 //        printf("%d\n", random_number);
         insert(random_number);
     }
-    gettimeofday(&end, 0);
     struct list_node *current = head;
     int boolean = 0;
     for(int j = 0; j <= i; j++) {
@@ -50,10 +46,6 @@ int main()
     if (boolean == 0){
         printf("List is sorted\n");
     }
-    dend = end.tv_sec + end.tv_usec / 1000000.;
-    dstart = start.tv_sec + start.tv_usec / 1000000.;
-//    printf("Start = %d.%d\nEnd = %d.%d\n", start.tv_sec, start.tv_usec, end.tv_sec, end.tv_usec);
-    printf ("time: %.6f\n", dend - dstart);
     return 0;
 }
 
